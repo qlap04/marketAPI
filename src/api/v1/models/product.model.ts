@@ -5,7 +5,8 @@ import { IProduct } from '@interfaces/IEntity';
 const ProductSchema: Schema = new Schema({
     title: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     price: {
         type: Number,
@@ -23,6 +24,10 @@ const ProductSchema: Schema = new Schema({
         type: String,
         required: true
     },
+    quantity: {
+        type: Number,
+        required: true
+    }
 });
 const Product = mongoose.model<IProduct>('Product', ProductSchema);
 export default Product

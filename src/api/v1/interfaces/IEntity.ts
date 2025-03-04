@@ -19,4 +19,5 @@ export interface IProduct extends Document {
     description: string;
     category: string;
     image: string;
+    quantity: number;
 }
