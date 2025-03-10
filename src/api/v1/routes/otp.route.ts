@@ -1,9 +1,9 @@
-import { Router } from 'express';
-import { sendOtpController, verifyOtpController } from '@controllers/otp.controller';
+// import { Router } from 'express';
+// import { sendOtpController, verifyOtpController } from '@controllers/otp.controller';
 
-const otpRouter = Router();
+// const otpRouter = Router();
 
-otpRouter.post('/send', sendOtpController);
-otpRouter.post('/verify', verifyOtpController);
+// otpRouter.post('/send', sendOtpController);
+// otpRouter.post('/verify', verifyOtpController);
 
-export default otpRouter;
+// export default otpRouter;

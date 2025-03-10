@@ -5,7 +5,7 @@ import 'dotenv/config'
 import authRouter from '@routes/auth.route';
 import productRouter from '@routes/product.route'
 import cookieParser from 'cookie-parser';
-import otpRouter from '@routes/otp.route';
+// import otpRouter from '@routes/otp.route';
 
 
 // app config
@@ -39,7 +39,7 @@ connectDB()
 
 app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/product', productRouter)
-app.use('/api/v1/otp', otpRouter);
+// app.use('/api/v1/otp', otpRouter);
 app.listen(port, () => {
     console.log(`Server Started on http://localhost:${port}`)
 })
