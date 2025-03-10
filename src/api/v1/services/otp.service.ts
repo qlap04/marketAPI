@@ -1,6 +1,6 @@
 import User from '@models/user.model';
 import nodemailer from 'nodemailer';
-import { OTP_EXPIRY, EMAIL_SERVICE, EMAIL_PASSWORD } from '@config/index.config';
+import { OTP_EXPIRY, EMAIL_MAIN, EMAIL_PASSWORD } from '@config/index.config';
 
 const generateOtp = (): string => {
     return Math.floor(100000 + Math.random() * 900000).toString();
@@ -11,13 +11,13 @@ const sendOtpEmail = async (email: string, otp: string) => {
     const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-            user: EMAIL_SERVICE,
+            user: EMAIL_MAIN,
             pass: EMAIL_PASSWORD,
         },
     });
 
     const mailOptions = {
-        from: EMAIL_SERVICE,
+        from: EMAIL_MAIN,
         to: email,
         subject: 'Your OTP for Verification',
         text: `Your OTP is ${otp}. It expires in ${OTP_EXPIRY} seconds.`,
@@ -39,8 +39,8 @@ const generateAndSendOtpService = async (email: string) => {
             return { success: false, message: 'User not found', status: 404 };
         }
 
-        const otp = generateOtp(); 
-        const otpExpiry = new Date(Date.now() + OTP_EXPIRY * 1000); 
+        const otp = generateOtp();
+        const otpExpiry = new Date(Date.now() + OTP_EXPIRY * 1000);
 
         //update value into DB
         user.otp = otp;
@@ -69,8 +69,6 @@ const verifyOtpService = async (email: string, otp: string) => {
             return { success: false, message: 'Invalid OTP', status: 400 };
         }
 
-        // Check OTP Expiry
-        
         if (new Date() > user.otpExpiry!) {
             return { success: false, message: 'OTP expired', status: 400 };
         }
@@ -87,4 +85,8 @@ const verifyOtpService = async (email: string, otp: string) => {
     }
 };
 
-export { generateAndSendOtpService, verifyOtpService };
+export {
+    sendOtpEmail,
+    generateAndSendOtpService,
+    verifyOtpService,
+};

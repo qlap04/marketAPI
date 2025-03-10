@@ -26,7 +26,8 @@ const ProductSchema: Schema = new Schema({
     },
     quantity: {
         type: Number,
-        required: true
+        required: true,
+        min: 0
     }
 });
 const Product = mongoose.model<IProduct>('Product', ProductSchema);

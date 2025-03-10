@@ -7,6 +7,10 @@
         "esModuleInterop": true,
         "skipLibCheck": true,
         "forceConsistentCasingInFileNames": true,
+        // "typeRoots": [
+        //     "@types",
+        //     "node_modules/@types"
+        // ],
         "baseUrl": ".", // Đảm bảo rằng baseUrl là thư mục gốc
         "paths": {
             "@/*": [
@@ -21,7 +25,7 @@
             "@routes/*": [
                 "src/api/v1/routes/*"
             ],
-            "@/middlewares*": [
+            "@middlewares/*": [
                 "src/api/v1/middlewares/*"
             ],
             "@models/*": [
@@ -39,9 +43,9 @@
         }
     },
     "include": [
-        "src/**/*.ts"
+        "src/**/*.ts",
     ],
     "exclude": [
         "node_modules"
-    ]
+    ],
 }

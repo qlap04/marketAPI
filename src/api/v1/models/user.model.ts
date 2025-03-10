@@ -2,7 +2,7 @@ import mongoose, { Schema } from "mongoose";
 import { IUser } from "../interfaces/IEntity";
 
 const userSchema: Schema = new Schema({
-    userName: {
+    username: {
         type: String,
         required: true,
         unique: true,
@@ -17,8 +17,9 @@ const userSchema: Schema = new Schema({
         required: true,
     },
     roleId: {
-        type: Schema.Types.ObjectId,
-        ref: 'Role',
+        // type: Schema.Types.ObjectId,
+        // ref: 'Role',
+        type: Number,
         required: true,
     },
     otp: {

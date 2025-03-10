@@ -6,7 +6,6 @@ const roleSchema = new Schema({
         type: Number,
         require: false,
         unique: true,
-        enum: [1, 2]
     },
     roleName: {
         type: String,
